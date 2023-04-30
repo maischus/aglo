@@ -1,0 +1,275 @@
+*, ::after, ::before {
+  box-sizing: border-box;
+	position: relative;
+}
+
+::selection {
+	background-color: var(--theme-secondary);
+	color: var(--theme-on-secondary);
+}
+
+:root {
+  /*--theme-font: font-family: 'Lato', sans-serif;*/
+  --theme-font: "Fira Sans", arial, sans-serif;
+
+  /* https://paletton.com/#uid=13T0u0kiP++00++ax+Ngg++IZ++ */
+  --theme-primary: #7c91ff; /* The theme primary color. */
+  --theme-secondary: #1238ff; /* The theme secondary color. */
+  --theme-surface: #b5c1fe; /* The theme surface color. */
+  --theme-background: #ffffff; /* The theme background color. */
+  
+  --theme-on-primary: ; /* Primary text on top of a theme primary color background. */
+  --theme-on-secondary: #ffffff; /* Secondary text on top of a theme primary color background. */
+  --theme-on-surface: ; /* Hint text on top of a theme primary color background. */
+  
+  --theme-text-primary-on-background: ; /* Primary text on top of the theme background color. */
+  --theme-text-secondary-on-background: ; /* Secondary text on top of the theme background color. */
+  --theme-text-hint-on-background: ; /* Hint text on top of the theme background color. */
+  --theme-text-disabled-on-background: ; /* Disabled text on top of the theme background color. */
+  --theme-text-icon-on-background: ; /* Icons on top of the theme background color. */
+  
+  --theme-text-primary-on-light: ; /* Primary text on top of a light-colored background. */
+  --theme-text-secondary-on-light: ; /* Secondary text on top of a light-colored background. */
+  --theme-text-hint-on-light: ; /* Hint text on top of a light-colored background. */
+  --theme-text-disabled-on-light: ; /* Disabled text on top of a light-colored background. */
+  --theme-text-icon-on-light: ; /* Icons on top of a light-colored background. */
+  
+  --theme-text-primary-on-dark: ; /* Primary text on top of a dark-colored background. */
+  --theme-text-secondary-on-dark: ; /* Secondary text on top of a dark-colored background. */
+  --theme-text-hint-on-dark: ; /* Hint text on top of a dark-colored background. */
+  --theme-text-disabled-on-dark: ; /* Disabled text on top of a dark-colored background. */
+  --theme-text-icon-on-dark: ; /* Icons on top of a dark-colored background. */
+}
+
+body {
+  margin: 0;
+  font-family: var(--theme-font);
+  background-color: var(--theme-backgroud);
+  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+select, option, input {
+  font-family: var(--theme-font);
+}
+
+a {
+  color: var(--theme-secondary);
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  text-decoration: underline;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+}
+
+th {
+  border-bottom: 3px solid #ddd;
+}
+
+td {
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: var(--theme-surface);;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: var(--theme-primary);
+  transition: top 500ms ease-in-out;
+  z-index: 1;
+}
+
+header.scroll-up,
+header:focus-within {
+  top: 0;
+}
+
+
+#hamburger input ~ ul {
+  display: none;
+}
+
+#hamburger input:checked ~ ul {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+header.scroll-down {
+  top: -100%;
+}
+
+
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+nav a, nav a:hover {
+	text-decoration: none;
+	color: #111;
+	display: block;
+}
+
+nav li a {
+  padding: 1rem;
+}
+
+nav li:hover > a, nav li:focus-within > a {
+  background-color: var(--theme-surface);
+  outline: none;
+}
+
+nav li.active > a {
+  background-color: var(--theme-secondary);
+  color: var(--theme-on-secondary);
+}
+
+
+
+#hamburger input {
+  display: none;
+}
+
+#hamburger div {
+  width: 1.375rem;
+  height: 1.125rem;
+  cursor: pointer;
+  position: relative;
+  margin-right: 0px;
+  margin-left: auto;
+}
+
+#hamburger span {
+  display: block;
+  position: absolute;
+  height: 0.125rem;
+  width: 100%;
+  background: #111;
+  left: 0;
+  transition: 0.2s ease-in-out;
+}
+
+#hamburger span:nth-child(1) {
+  top: 0;
+}
+
+#hamburger span:nth-child(2), #hamburger span:nth-child(3) {
+  top: 0.5rem;
+}
+
+#hamburger span:nth-child(4) {
+  top: 1rem;
+}
+
+#hamburger input:checked + label span:nth-child(1), #hamburger input:checked + label span:nth-child(4) {
+  top: 0.5rem;
+  width: 0%;
+  left: 50%;
+}
+
+#hamburger input:checked + label span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+#hamburger input:checked + label span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+@media only screen and ( min-width: 768px ) {
+  #hamburger label {
+    display: none;
+  }
+  
+  #hamburger input ~ ul {
+	display: flex;
+	justify-content: flex-end;
+  }
+  
+  nav ul li ul {
+    background: var(--theme-primary);
+	border: 1px solid var(--theme-surface);
+    min-width: 5rem;
+    position: absolute;
+    transition: all 0.5s ease;
+	width: 100%;
+	visibility: hidden;
+    opacity: 0;
+    display: none;
+  }
+  
+  ul li:hover > ul,
+  ul li:focus-within > ul,
+  ul li ul:hover,
+  ul li ul:focus {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+  }
+}
+
+.logo {
+	margin: 0;
+}
+
+.logo a {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #000;
+  text-decoration: none;
+  
+  font-size: 1em;
+}
+
+main {
+  width: 65%;
+  margin: 0 auto;
+  flex: 1;
+}
+
+
+
+footer {
+  padding: 1em;
+  text-align: center;
+  background-color: var(--theme-surface);
+}
+
+/*p, li {
+  line-height: 1.75;
+}*/
+
+@media print {
+  nav {
+    display: none !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  main {
+    width: 100%;
+  }
+}

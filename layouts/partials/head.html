@@ -1,0 +1,13 @@
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+{{ $title := print .Title " - " .Site.Title }}
+{{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
+<title>{{ $title }}</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/theme.css?21">
+<link rel="stylesheet" type="text/css" href="/css/theme-colors.css?1">
+{{ with $.Resources.GetMatch "**.css"}}
+<link rel="stylesheet" type="text/css" href="{{ . }}?1">
+{{ end }}
+</head>

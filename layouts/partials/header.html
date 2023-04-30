@@ -1,0 +1,42 @@
+<header>
+  <h1 class="logo">
+    <a href="{{ .Site.Home.RelPermalink }}">
+      {{ with .Site.Params.site_logo }}
+        <img src="{{ . }}" alt="{{ $.Site.Title }}"/>
+      {{ else }}
+        {{ .Site.Title }}
+      {{ end }}
+    </a>
+  </h1>
+
+  <nav>
+    {{ if .Site.Menus.main }}
+    <div id="hamburger">
+      <input id="hamburger-toggle" type="checkbox"/>
+      <label for="hamburger-toggle">
+        <div>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </label>
+
+      <ul>
+      {{ $currentPage := . }}
+      {{ range .Site.Menus.main }}
+        <li class="{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}active{{end}}"><a href="{{ .URL }}" title="{{ .Title }}" {{ if .HasChildren }}aria-haspopup="true"{{ end }}>{{ .Name }}</a>
+        {{ if .HasChildren }}
+          <ul aria-label="submenu">
+          {{ range .Children }}
+            <li class="{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}"><a  href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a></li>
+          {{ end }}
+          </ul>
+        {{ end }}
+        </li>
+      {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+   </nav>
+</header>
