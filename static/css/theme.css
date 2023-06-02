@@ -10,7 +10,7 @@
 
 :root {
   /*--theme-font: font-family: 'Lato', sans-serif;*/
-  --theme-font: "Fira Sans", arial, sans-serif;
+  --theme-font: system-ui, -apple-system, sans-serif;
 
   /* https://paletton.com/#uid=13T0u0kiP++00++ax+Ngg++IZ++ */
   --theme-primary: #7c91ff; /* The theme primary color. */
