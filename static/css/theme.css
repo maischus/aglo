@@ -1,6 +1,5 @@
 *, ::after, ::before {
   box-sizing: border-box;
-	position: relative;
 }
 
 ::selection {
@@ -117,7 +116,6 @@ header.scroll-down {
 }
 
 
-
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -202,18 +200,17 @@ nav li.active > a {
   }
   
   #hamburger input ~ ul {
-	display: flex;
-	justify-content: flex-end;
+	  display: flex;
+	  justify-content: flex-end;
   }
   
   nav ul li ul {
     background: var(--theme-primary);
-	border: 1px solid var(--theme-surface);
+	  border: 1px solid var(--theme-surface);
     min-width: 5rem;
     position: absolute;
     transition: all 0.5s ease;
-	width: 100%;
-	visibility: hidden;
+	  visibility: hidden;
     opacity: 0;
     display: none;
   }
