@@ -245,7 +245,20 @@ main {
   flex: 1;
 }
 
+blockquote {
+  background-color: #f9f9f9;
+  border-left: 8px solid var(--theme-primary);
+  padding: 0.5em 60px;
+}
 
+blockquote::before {
+    font-family: Inter, Roboto, Helvetica Neue, Arial Nova, Nimbus Sans, Arial, sans-serif;
+    content: "“";
+    color: var(--theme-primary);
+    font-size: 4em;
+    position: absolute;
+    transform: translate(-35px, 0);
+  }
 
 footer {
   padding: 1em;
