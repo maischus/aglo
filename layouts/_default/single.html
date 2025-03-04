@@ -1,5 +1,20 @@
 {{ define "main" }}
 
+{{ with .Params.cover }}
+<p><img src="{{ . }}" width="100%" style="aspect-ratio: 8 / 6; object-fit: cover; object-position: 50% 70%;"></p>
+{{ end }}
+
 {{ .Content }}
+
+{{- range .Params.authors }}
+  {{- with $.Site.GetPage "taxonomyTerm" (printf "authors/%s" (urlize .)) }}
+    <figure>
+      <img src="{{ .Params.photo }}" alt=""/>
+      <figcaption>
+        <a href="{{ .Permalink }}">{{ .Params.name }}</a>
+      </figcaption>
+    </figure>
+  {{ end }}
+{{ end }}
 
 {{ end }}
