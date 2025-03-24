@@ -3,7 +3,7 @@
 }
 
 ::selection {
-	background-color: var(--theme-secondary);
+	background-color: var(--theme-brand);
 	color: var(--theme-on-secondary);
 }
 
@@ -16,16 +16,38 @@
   --theme-font: system-ui, -apple-system, sans-serif;
   --shadow: rgba(37, 38, 39, 0.04) 0px 3px 5px -2px, rgba(37, 38, 39, 0.06) 0px 7px 14px -5px;
 
+  --hue: 265;
+
+  --swatch-0: oklch(100% 0 var(--hue));
+  --swatch-1: oklch(99% .05 var(--hue));
+  --swatch-2: oklch(90% .1 var(--hue));
+  --swatch-3: oklch(80% .2 var(--hue));
+  --swatch-4: oklch(72% .25 var(--hue));
+  --swatch-5: oklch(67% .31 var(--hue));
+  --swatch-6: oklch(50% .27 var(--hue));
+  --swatch-7: oklch(35% .25 var(--hue));
+  --swatch-8: oklch(25% .2 var(--hue));
+  --swatch-9: oklch(13% .2 var(--hue));
+  --swatch-10: oklch(5% .1 var(--hue));
+
+  --black: #1b1b1b;
+
   /* https://paletton.com/#uid=13T0u0kiP++00++ax+Ngg++IZ++ */
-  --theme-primary: #7c91ff; /* The theme primary color. */
-  --theme-secondary: #1238ff; /* The theme secondary color. */
-  --theme-surface: #b5c1fe; /* The theme surface color. */
-  --theme-background: #ffffff; /* The theme background color. */
-  
-  --theme-on-primary: #000; /* Primary text on top of a theme primary color background. */
-  --theme-on-secondary: #ffffff; /* Secondary text on top of a theme primary color background. */
-  --theme-on-surface: lightgray; /* Hint text on top of a theme primary color background. */
-  --theme-on-background: #000000;
+  --theme-brand: var(--swatch-5);
+  --theme-surface: var(--swatch-1); /* The theme surface color. */
+  --theme-background: var(--swatch-0); /* The theme background color. */
+  --theme-on-surface: var(--swatch-10); /* Hint text on top of a theme primary color background. */
+  --theme-text: var(--black);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme-brand: var(--swatch-5);
+    --theme-surface: var(--swatch-10); /* The theme surface color. */
+    --theme-background: var(--black); /* The theme background color. */
+    --theme-on-surface: var(--swatch-1); /* Hint text on top of a theme primary color background. */
+    --theme-text: var(--swatch-0);
+  }
 }
 
 html {
@@ -33,10 +55,12 @@ html {
 }
 
 body {
+  accent-color: var(--theme-brand);
   background-color: var(--theme-background);
-  color: var(--theme-on-background);
+  color: var(--theme-text);
   margin: 0;
   min-height: 100vh;
+  scrollbar-color: var(--theme-brand) var(--theme-background);
 }
 
 select, option, input {
@@ -44,7 +68,7 @@ select, option, input {
 }
 
 a {
-  color: var(--theme-secondary);
+  color: var(--theme-brand);
   text-decoration: none;
 }
 
@@ -74,7 +98,7 @@ tr:hover {
 
 header {
   align-items: center;
-  color: var(--theme-primary);
+  color: var(--theme-brand);
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -87,7 +111,7 @@ header {
 header.sticking {
   background-color: var(--theme-background);
   box-shadow: var(--shadow);
-  transition: background-color 500ms ease-in-out;
+  /*transition: background-color 500ms ease-in-out;*/
 }
 
 
@@ -111,7 +135,7 @@ nav ul {
 
 nav a, nav a:hover {
 	text-decoration: none;
-	color: var(--theme-primary);
+	color: var(--theme-brand);
 	display: block;
 }
 
@@ -234,14 +258,14 @@ main {
 
 blockquote {
   background-color: var(--theme-surface);
-  border-left: 8px solid var(--theme-secondary);
+  border-left: 8px solid var(--theme-brand);
   color: var(--theme-on-surface);
   padding: 0.5em 60px;
 }
 
 blockquote::before {
     content: "“";
-    color: var(--theme-secondary);
+    color: var(--theme-brand);
     font-family: Inter, Roboto, Helvetica Neue, Arial Nova, Nimbus Sans, Arial, sans-serif;
     font-size: 4em;
     position: absolute;
@@ -266,7 +290,7 @@ footer {
   flex-direction: column;
   gap: var(--size-fluid-3);
 
-  color: var(--theme-primary);
+  color: var(--theme-brand);
 
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("/images/hero.jpg");

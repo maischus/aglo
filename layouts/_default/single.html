@@ -1,7 +1,7 @@
 {{ define "main" }}
 
-{{ with .Params.cover }}
-<p><img src="{{ . }}" width="100%" style="aspect-ratio: 8 / 6; object-fit: cover; object-position: 50% 70%;"></p>
+{{- with .Resources.Get .Params.cover }}
+  <p><img src="{{ .RelPermalink }}" width="100%" style="aspect-ratio: 8 / 6; object-fit: cover; object-position: 50% 70%;"></p>
 {{ end }}
 
 {{ .Content }}
@@ -9,7 +9,12 @@
 {{- range .Params.authors }}
   {{- with $.Site.GetPage "taxonomyTerm" (printf "authors/%s" (urlize .)) }}
     <figure>
-      <img src="{{ .Params.photo }}" alt=""/>
+      {{ with .Resources.Get .Params.photo }}
+        {{ with .Resize "50x" }}
+          <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt=""/>
+        {{ end }}
+      {{ end }}
+
       <figcaption>
         <a href="{{ .Permalink }}">{{ .Params.name }}</a>
       </figcaption>

@@ -3,8 +3,8 @@
 
 {{ .Content }}
 
-{{ range .Pages }}
+{{ range .Pages.ByWeight.Reverse }}
 <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-<p>{{ .Summary }}</p>
+<p>{{ .Description }}</p>
 {{ end }}
 {{ end }}
