@@ -3,8 +3,8 @@
 }
 
 ::selection {
-	background-color: var(--theme-brand);
-	color: var(--theme-on-secondary);
+  background-color: var(--theme-brand);
+  color: var(--theme-on-secondary);
 }
 
 @view-transition {
@@ -221,7 +221,7 @@ nav li.active > a {
     min-width: 5rem;
     position: absolute;
     transition: all 0.5s ease;
-	  visibility: hidden;
+    visibility: hidden;
     opacity: 0;
     display: none;
   }
@@ -237,7 +237,7 @@ nav li.active > a {
 }
 
 .logo {
-	margin: 0;
+  margin: 0;
 }
 
 .logo a {
@@ -264,13 +264,27 @@ blockquote {
 }
 
 blockquote::before {
-    content: "“";
-    color: var(--theme-brand);
-    font-family: Inter, Roboto, Helvetica Neue, Arial Nova, Nimbus Sans, Arial, sans-serif;
-    font-size: 4em;
-    position: absolute;
-    transform: translate(-35px, 0);
+  content: "“";
+  color: var(--theme-brand);
+  font-family: Inter, Roboto, Helvetica Neue, Arial Nova, Nimbus Sans, Arial, sans-serif;
+  font-size: 4em;
+  position: absolute;
+  transform: translate(-35px, 0);
+}
+
+label:has(input[type="file"]) {
+  cursor: pointer;
+  display: block;
+  border: 2px dashed #bbb;
+  border-radius: 5px;
+  padding: 25px;
+  text-align: center;
+  color: #bbb;
+  
+  input[type="file"] {
+    display: none;
   }
+}
 
 footer {
   padding: 1em;
