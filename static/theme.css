@@ -328,6 +328,22 @@ footer {
   color: var(--gray-12);
 }
 
+.input-group {
+  display: flex;
+}
+.input-group > *:focus {
+  z-index: 1;
+}
+.input-group > :not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-group > :not(:first-child) {
+  margin-left: calc(-1 * var(--border-width));
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 /*p, li {
   line-height: 1.75;
 }*/
